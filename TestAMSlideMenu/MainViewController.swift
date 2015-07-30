@@ -22,13 +22,26 @@ class MainViewController: AMSlideMenuMainViewController {
     }
 
     override func segueIdentifierForIndexPathInLeftMenu(indexPath: NSIndexPath!) -> String! {
-        var identifier: String? = nil
+        var identifier: String?
         switch(indexPath.row) {
         case 0:
-            identifier = "firstSegue"
+            identifier = "firstSegueLeft"
             
         case 1:
-            identifier = "secondSegue"
+            identifier = "secondSegueLeft"
+        default:
+            identifier = nil
+        }
+        return identifier
+    }
+    
+    override func segueIdentifierForIndexPathInRightMenu(indexPath: NSIndexPath!) -> String! {
+        var identifier: String?
+        switch(indexPath.row) {
+        case 0:
+            identifier = "firstSegueRight"
+        case 1:
+            identifier = "secondSegueRight"
         default:
             identifier = nil
         }
@@ -39,6 +52,24 @@ class MainViewController: AMSlideMenuMainViewController {
         button.frame = CGRectMake(0, 0, 40, 40)
         let image: UIImage! = UIImage(named: "hamburger.png")
         button.setImage(image, forState: UIControlState.Normal)
+    }
+    
+    override func configureRightMenuButton(button: UIButton!) {
+        button.frame = CGRectMake(0, 0, 40, 40)
+        let image: UIImage! = UIImage(named: "hamburger.png")
+        button.setImage(image, forState: UIControlState.Normal)
+    }
+    
+    override func leftMenuWidth() -> CGFloat {
+        return 200
+    }
+    
+    override func rightMenuWidth() -> CGFloat {
+        return 200
+    }
+    
+    override func deepnessForLeftMenu() -> Bool {
+        return true
     }
 }
 
